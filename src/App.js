@@ -1,5 +1,6 @@
 //* import React so extends work for class
-import React from "react";
+//? By destructuring Component from React at import
+import React, { Component } from "react";
 //main css for every component
 import "./App.css";
 
@@ -10,7 +11,8 @@ import "./App.css";
 
 //changed func to class
 //*For class to work need to extend with React component
-class App extends React.Component {
+//? Replace: extends React.Component
+class App extends Component {
   //*class needs render() method to return
   //lifecycle method
   render() {
