@@ -47,7 +47,7 @@ class App extends Component {
 
         {loading ? <h4>Loading true</h4> : <h4>Loading false</h4>}
         <h4>
-          && = If showName is true then show name else null{showName && name}
+          && = If showName is true then show name else null {showName && name}
         </h4>
       </div>
     );
