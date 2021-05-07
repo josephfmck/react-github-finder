@@ -8,49 +8,13 @@ import "./App.css";
 //*For class to work need to extend with React component
 
 class App extends Component {
-  //* Method as part of the class, have to use 'this'
-  foo2 = () => "bar2";
+  //* Methods GO HERE as part of the class, have to use 'this'
 
   render() {
-    //* Can add JS with {}
-    const name = "John Doe";
+    //* COMMENT GO HERE
+    //* Can add DOM JS IN RETURN with {}
 
-    const foo = () => "bar";
-
-    //* conditional, ex. API data
-    const loading = false;
-    //?messy conditional WILL REPLACE return()'s DOM
-    // if (loading) {
-    //   return (
-    //     <h4>
-    //       Conditional outside of main return(): returns ONLY this h4, Loading...
-    //       true.
-    //     </h4>
-    //   );
-    // }
-    //?better to use ternary within return() because DOESNT REPLACE EVERYTHING
-
-    //* another conditional, can put ternary in another ternary if you want
-    //* && = if showName is true, display name
-    const showName = true;
-
-    return (
-      <div className='App'>
-        <h1>
-          Hello {foo()} {this.foo2()} {}
-        </h1>
-        <p>
-          Var declared outside return(): {name.toUpperCase()} {1 + 1}
-        </p>
-        <p>Function declared outside return(): {foo()}</p>
-        <p>Class Method declared outside render(): {this.foo2()} </p>
-
-        {loading ? <h4>Loading true</h4> : <h4>Loading false</h4>}
-        <h4>
-          && = If showName is true then show name else null {showName && name}
-        </h4>
-      </div>
-    );
+    return <div className='App'></div>;
   }
 }
 
