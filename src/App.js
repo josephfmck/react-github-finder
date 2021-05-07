@@ -1,6 +1,6 @@
 //* import React so extends work for class
 //? By destructuring Component from React at import
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 //main css for every component
 import "./App.css";
 
@@ -16,7 +16,11 @@ class App extends Component {
   //*class needs render() method to return
   //lifecycle method
   render() {
-    //class for JS, className for JSX
+    //*NOT HTML ACTUALLY JSX
+    //HTML : JSX
+    // class : className, label's for : htmlFor
+    //everything needs to be wrapped in 1 parent el: 'App'
+    //? Not want parent to be div? Replace: parent div App with React.Fragment. ALSO could just use <> but comes with issues
     return (
       <div className='App'>
         <h1>Hello from React</h1>
