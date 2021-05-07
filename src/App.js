@@ -14,7 +14,11 @@ class App extends Component {
     //* COMMENT GO HERE
     //* Can add DOM JS IN RETURN with {}
 
-    return <div className='App'></div>;
+    return (
+      <div className='App'>
+        <h1>Hello</h1>
+      </div>
+    );
   }
 }
 
