@@ -5,25 +5,40 @@ import React, { Component, Fragment } from "react";
 import "./App.css";
 
 //*MAIN APP COMPONENT is render through #root
-//Components can be functions (like here) OR Classes
-//Class component: can have state
-//function component: need hooks for state
-
-//changed func to class
 //*For class to work need to extend with React component
-//? Replace: extends React.Component
+
 class App extends Component {
-  //*class needs render() method to return
-  //lifecycle method
+  //* Method as part of the class, have to use 'this'
+  foo2 = () => "bar2";
+
   render() {
-    //*NOT HTML ACTUALLY JSX
-    //HTML : JSX
-    // class : className, label's for : htmlFor
-    //everything needs to be wrapped in 1 parent el: 'App'
-    //? Not want parent to be div? Replace: parent div App with React.Fragment. ALSO could just use <> but comes with issues
+    //* Can add JS with {}
+    const name = "John Doe";
+
+    const foo = () => "bar";
+
+    //* conditional, ex. API data
+    const loading = false;
+    //?messy conditional
+    // if (loading) {
+    //   return (
+    //     <h4>
+    //       Conditional outside of main return(): returns ONLY this h4, Loading...
+    //       true.
+    //     </h4>
+    //   );
+    // }
+
     return (
       <div className='App'>
-        <h1>Hello from React</h1>
+        <h1>
+          Hello {foo()} {this.foo2()} {}
+        </h1>
+        <p>
+          Var declared outside return(): {name.toUpperCase()} {1 + 1}
+        </p>
+        <p>Function declared outside return(): {foo()}</p>
+        <p>Class Method declared outside render(): {this.foo2()} </p>
       </div>
     );
   }
