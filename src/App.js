@@ -19,7 +19,7 @@ class App extends Component {
 
     //* conditional, ex. API data
     const loading = false;
-    //?messy conditional
+    //?messy conditional WILL REPLACE return()'s DOM
     // if (loading) {
     //   return (
     //     <h4>
@@ -28,6 +28,11 @@ class App extends Component {
     //     </h4>
     //   );
     // }
+    //?better to use ternary within return() because DOESNT REPLACE EVERYTHING
+
+    //* another conditional, can put ternary in another ternary if you want
+    //* && = if showName is true, display name
+    const showName = true;
 
     return (
       <div className='App'>
@@ -39,6 +44,11 @@ class App extends Component {
         </p>
         <p>Function declared outside return(): {foo()}</p>
         <p>Class Method declared outside render(): {this.foo2()} </p>
+
+        {loading ? <h4>Loading true</h4> : <h4>Loading false</h4>}
+        <h4>
+          && = If showName is true then show name else null{showName && name}
+        </h4>
       </div>
     );
   }
