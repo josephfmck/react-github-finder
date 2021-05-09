@@ -15,14 +15,18 @@ class App extends Component {
   //* Methods GO HERE as part of the class, have to use 'this'
 
   render() {
-    //* COMMENT GO HERE
+    //* COMMENTS GO HERE
+    //* TO COMMENT IN RENDER {/* */}
     //* Can add DOM JS IN RETURN with {}
     //add components with < ComponentName/>
 
-    //* Navbar Prop: title
     return (
       <div className='App'>
-        <Navbar title='Github Finder' icon='fab fa-github' />
+        {/** Navbar Props: title and icon */}
+        {/* <Navbar title='Github Finder' icon='fab fa-github' /> */}
+
+        {/** Default Props: when title and icon are not written */}
+        <Navbar />
       </div>
     );
   }
