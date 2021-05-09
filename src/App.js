@@ -2,11 +2,13 @@
 //? By destructuring Component from React at import
 import React, { Component, Fragment } from "react";
 //* import components before CSS
-//Navbar component
+//* COMPONENTS
 import Navbar from "./components/layout/Navbar";
+import UserItem from "./components/users/UserItem";
 
 //*LAST main css for every component
 import "./App.css";
+import UserItem from "./components/users/UserItem";
 
 //*MAIN APP COMPONENT is render through #root
 //*For class to work need to extend with React component
@@ -27,6 +29,7 @@ class App extends Component {
 
         {/** Default Props: when title and icon are not written, When 'title'="Github Binder" written it overwrites default title*/}
         <Navbar title='Github Binder' />
+        <UserItem />
       </div>
     );
   }
