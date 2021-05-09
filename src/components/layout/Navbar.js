@@ -2,6 +2,7 @@
 //* shorthand:    rce ~press enter~
 //?creates this class component
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 //? To Use fontawesome icon: in public/index.html add link
 
@@ -12,6 +13,12 @@ export class Navbar extends Component {
   static defaultProps = {
     title: "Github Finder",
     icon: "fab fa-github",
+  };
+
+  //* Checks props for required type 'str','obj' etc.
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
   };
 
   render() {

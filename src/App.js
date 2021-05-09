@@ -25,8 +25,8 @@ class App extends Component {
         {/** Navbar Props: title and icon */}
         {/* <Navbar title='Github Finder' icon='fab fa-github' /> */}
 
-        {/** Default Props: when title and icon are not written */}
-        <Navbar />
+        {/** Default Props: when title and icon are not written, When 'title'="Github Binder" written it overwrites default title*/}
+        <Navbar title='Github Binder' />
       </div>
     );
   }
