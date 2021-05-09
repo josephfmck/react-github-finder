@@ -18,7 +18,17 @@ class UserItem extends Component {
   }
 
   render() {
-    return <div className='card text-center'>UserItem</div>;
+    return (
+      <div className='card text-center'>
+        {/* grabs state */}
+        <img
+          src={this.state.avatar_url}
+          alt=''
+          className='round-img'
+          style={{ width: "60px" }}
+        />
+      </div>
+    );
   }
 }
 
