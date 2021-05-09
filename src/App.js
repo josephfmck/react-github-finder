@@ -19,14 +19,11 @@ class App extends Component {
     //* Can add DOM JS IN RETURN with {}
     //add components with < ComponentName/>
 
-    //For Nav: switch wrap div to navTag
-    //? To Use fontawesome icon: in public/index.html add link
+    //* Navbar Prop: title
     return (
-      <nav className='navbar bg-primary'>
-        <h1>
-          <i className='fab fa-github'></i>Navbar
-        </h1>
-      </nav>
+      <div className='App'>
+        <Navbar title='Github Finder' icon='fab fa-github' />
+      </div>
     );
   }
 }
