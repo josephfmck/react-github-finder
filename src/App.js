@@ -4,7 +4,8 @@ import React, { Component, Fragment } from "react";
 //* import components before CSS
 //* COMPONENTS
 import Navbar from "./components/layout/Navbar";
-import UserItem from "./components/users/UserItem";
+// import UserItem from "./components/users/UserItem";
+import Users from "./components/users/Users";
 
 //*LAST main css for every component
 import "./App.css";
@@ -16,7 +17,6 @@ class App extends Component {
   //* Methods GO HERE as part of the class, have to use 'this'
 
   render() {
-    //* COMMENTS GO HERE
     //* TO COMMENT IN RENDER {/* */}
     //* Can add DOM JS IN RETURN with {}
     //add components with < ComponentName/>
@@ -28,7 +28,7 @@ class App extends Component {
 
         {/** Default Props: when title and icon are not written, When 'title'="Github Binder" written it overwrites default title*/}
         <Navbar title='Github Binder' />
-        <UserItem />
+        <Users />
       </div>
     );
   }
