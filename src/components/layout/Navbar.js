@@ -5,12 +5,13 @@ import PropTypes from "prop-types";
 
 //? To Use fontawesome icon: in public/index.html add link
 
-const Navbar = (props) => {
+//* Destructure from Navbar (props)
+const Navbar = ({ icon, title }) => {
   return (
     <nav className='navbar bg-primary'>
       <h1>
         {/* Grab Navbar Prop 'title' from App.js using {props.title} */}
-        <i className={props.icon}></i> {props.title}
+        <i className={icon}></i> {title}
       </h1>
     </nav>
   );
