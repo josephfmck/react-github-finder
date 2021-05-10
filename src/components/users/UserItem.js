@@ -2,20 +2,13 @@ import React, { Component } from "react";
 
 //* dont need export because its below already
 class UserItem extends Component {
-  //*Constructor: Function that runs when component runs
-  constructor() {
-    //*super(); NEED for constructor fires off as soon as component loads
-    super();
-    console.log(123);
-
-    //*obj to track data
-    this.state = {
-      id: "id",
-      login: "mojombo",
-      avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
-      html_url: "https://github.com/mojombo",
-    };
-  }
+  //*obj to track data
+  state = {
+    id: "id",
+    login: "mojombo",
+    avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
+    html_url: "https://github.com/mojombo",
+  };
 
   render() {
     return (
@@ -27,6 +20,13 @@ class UserItem extends Component {
           className='round-img'
           style={{ width: "60px" }}
         />
+        <h3>{this.state.login}</h3>
+        <div>
+          <a
+            href={this.state.html_url}
+            className='btn btn-dark btn-sm my-1'
+          >{`${this.state.html_url}`}</a>
+        </div>
       </div>
     );
   }
