@@ -19,7 +19,6 @@ class App extends Component {
   render() {
     //* TO COMMENT IN RENDER {/* */}
     //* Can add DOM JS IN RETURN with {}
-    //add components with < ComponentName/>
 
     return (
       <div className='App'>
