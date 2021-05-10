@@ -1,36 +1,34 @@
-//ES7 React snippets Extension shortcut
 //* shorthand:    rce ~press enter~
 //?creates this class component
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 //? To Use fontawesome icon: in public/index.html add link
 
-export class Navbar extends Component {
-  //* Default props: when in App.js <Navbar /> has no props written
-  //? static does what?
-  //* defaultProps obj: Access to Props not included in App.js <Navbar />
-  static defaultProps = {
-    title: "Github Finder",
-    icon: "fab fa-github",
-  };
+const Navbar = (props) => {
+  return (
+    <nav className='navbar bg-primary'>
+      <h1>
+        {/* Grab Navbar Prop 'title' from App.js using {props.title} */}
+        <i className={props.icon}></i> {props.title}
+      </h1>
+    </nav>
+  );
+};
 
-  //* Checks props for required type 'str','obj' etc.
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-  };
+//? Class Component: Default and PropTypes placed inside Component
+//* Functional Component: Default and PropTypes placed outside of Component
+//* Default props: when in App.js <Navbar /> has no props written
+//? static replaced with Navbar.defaultProps
+Navbar.defaultProps = {
+  title: "Github Finder",
+  icon: "fab fa-github",
+};
 
-  render() {
-    return (
-      <nav className='navbar bg-primary'>
-        <h1>
-          {/* Grab Navbar Prop 'title' from App.js using {this.props.title} */}
-          <i className={this.props.icon}></i> {this.props.title}
-        </h1>
-      </nav>
-    );
-  }
-}
+//* Checks props for required type 'str','obj' etc.
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+};
 
 export default Navbar;
