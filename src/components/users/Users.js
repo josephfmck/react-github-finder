@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+//* grab to add props to this component, Users.js is a parent/wrapper to UserItem
 import UserItem from "./UserItem";
 
 export class Users extends Component {
@@ -27,7 +28,7 @@ export class Users extends Component {
 
   render() {
     return (
-      <div>
+      <div style={userStyle}>
         {/* loop create user divs */}
         {this.state.users.map((u) => (
           // key attr for unique check
@@ -39,5 +40,12 @@ export class Users extends Component {
     );
   }
 }
+
+//* Declare inline styles, This will be a wrapper grid
+const userStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "1rem",
+};
 
 export default Users;

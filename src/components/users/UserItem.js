@@ -10,10 +10,10 @@ class UserItem extends Component {
   //   avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
   //   html_url: "https://github.com/mojombo",
   // };
+  //? dont have to use {this.state} in render()
 
   render() {
-    //? dont have to use {this.state} in render()
-    //*Destructure state's props
+    //*Destructure Users.js props
     const { login, avatar_url, html_url } = this.props.user;
 
     return (
