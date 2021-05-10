@@ -11,18 +11,32 @@ import axios from "axios";
 import "./App.css";
 
 //*For class to work need to extend with React component
-
 class App extends Component {
-  //* Methods GO HERE as part of the class, have to use 'this'
+  //* Set State
+  //? while fetching loading: true, once fetched false
+  state = {
+    users: [],
+    loading: false,
+  };
+
+  //* Class Methods GO HERE, have to use 'this'
 
   //* Lifecycle Method: exec when component mounted
   async componentDidMount() {
-    //* PLACE HTTP Request WHEN App Loads HERE
     console.log("App Component Mounted");
+
+    //* Set State, true = fetching
+    this.setState({ loading: true });
+
+    //* PLACE HTTP Request WHEN App Loads HERE
     //*Get 1st 30 users
     const res = await axios.get("https://api.github.com/users");
 
     console.log(res.data);
+
+    //* Set State, AFTER FETCH
+    //? Now users = API data
+    this.setState({ users: res.data, loading: false });
   }
 
   //* Lifecycle Method: render()
