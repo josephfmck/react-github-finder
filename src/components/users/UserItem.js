@@ -2,9 +2,10 @@ import React from "react";
 
 //* Switch from Class to Function Component
 //* Functional Component: Doesn't need render(), Don't use this.props to grab props, instead pass in (props)
-const UserItem = (props) => {
-  //*Destructure Users.js props
-  const { login, avatar_url, html_url } = props.user;
+//* Destructure User.js props: {user: { login, etc. }}
+const UserItem = ({ user: { login, avatar_url, html_url } }) => {
+  //*? REPLACE Destructure Users.js props
+  //const { login, avatar_url, html_url } = props.user;
 
   return (
     <div className='card text-center'>
