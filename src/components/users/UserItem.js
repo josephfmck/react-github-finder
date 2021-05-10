@@ -1,4 +1,6 @@
 import React from "react";
+//*SINCE ({user prop}) passed in, NEED UserItem.js propTypes
+import PropTypes from "prop-types";
 
 //* Switch from Class to Function Component
 //* Functional Component: Doesn't need render(), Don't use this.props to grab props, instead pass in (props)
@@ -25,6 +27,14 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
       </div>
     </div>
   );
+};
+
+//* PropTypes needed when grabbing User.js props
+//* Check User.js props are right types
+//? user not users cuz it is passed in as user in Users.js map()
+//short: ptor = PropTypes.object.isRequired
+UserItem.PropTypes = {
+  user: PropTypes.object.isRequired,
 };
 
 export default UserItem;
