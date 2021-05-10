@@ -33,7 +33,7 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
 //* Check User.js props are right types
 //? user not users cuz it is passed in as user in Users.js map()
 //short: ptor = PropTypes.object.isRequired
-UserItem.PropTypes = {
+UserItem.propTypes = {
   user: PropTypes.object.isRequired,
 };
 
