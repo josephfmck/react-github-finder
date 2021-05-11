@@ -7,7 +7,7 @@ export class Search extends Component {
   };
 
   //* EVENTS
-  //*OnChange Event, to type into search input
+  //*OnChange Event, type into search input
   //? if have lots of inputs: name, email, etc.
   //* Use name attr to set all [e.target.name], [] to dynamic update object properties
   onChange = (e) => {
