@@ -7,8 +7,10 @@ export class Search extends Component {
   };
 
   //*OnChange Event, to type into search input
+  //? if have lots of inputs: name, email, etc.
+  //* Use name attr to set all [e.target.name], [] to dynamic update object properties
   onChange = (e) => {
-    this.setState({ text: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
