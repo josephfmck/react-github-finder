@@ -6,6 +6,7 @@ export class Search extends Component {
     text: "",
   };
 
+  //* EVENTS
   //*OnChange Event, to type into search input
   //? if have lots of inputs: name, email, etc.
   //* Use name attr to set all [e.target.name], [] to dynamic update object properties
@@ -13,10 +14,18 @@ export class Search extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  //* Submit Event
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(this.state.text);
+  };
+
   render() {
     return (
       <div>
-        <form className='form'>
+        {/* onSubmit Event exec onSubmit() */}
+        <form onSubmit={this.onSubmit} className='form'>
           {/* set text val to state, NEED onchange event to change text/state  */}
           <input
             type='text'
