@@ -5,6 +5,7 @@ import React, { Component, Fragment } from "react";
 import Navbar from "./components/layout/Navbar";
 // import UserItem from "./components/users/UserItem";
 import Users from "./components/users/Users";
+import Search from "./components/users/Search";
 import axios from "axios";
 
 //*LAST main css for every component
@@ -53,6 +54,7 @@ class App extends Component {
         {/** Default Props: when title and icon are not written, When 'title'="Github Binder" written it overwrites default title*/}
         <Navbar title='Github Binder' />
         <div className='container'>
+          <Search />
           {/* pass state as Users props */}
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
