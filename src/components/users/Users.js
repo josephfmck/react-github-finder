@@ -15,7 +15,7 @@ export class Users extends Component {
   //   ],
   // };
 
-  //? REPLACE this.state with this.props to grab Users.js API props from App.js
+  //? REPLACE {this.state} with {this.props} to grab Users.js API props from App.js
   render() {
     return (
       <div style={userStyle}>
