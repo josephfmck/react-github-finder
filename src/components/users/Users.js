@@ -3,34 +3,24 @@ import React, { Component } from "react";
 import UserItem from "./UserItem";
 
 export class Users extends Component {
-  state = {
-    users: [
-      {
-        id: "id",
-        login: "mojombo",
-        avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
-        html_url: "https://github.com/mojombo",
-      },
-      {
-        id: "id",
-        login: "mojombo",
-        avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
-        html_url: "https://github.com/mojombo",
-      },
-      {
-        id: "id",
-        login: "mojombo",
-        avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
-        html_url: "https://github.com/mojombo",
-      },
-    ],
-  };
+  //?REPLACE State with API data Props passed in from App.js
+  // state = {
+  //   users: [
+  //     {
+  //       id: "id",
+  //       login: "mojombo",
+  //       avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
+  //       html_url: "https://github.com/mojombo",
+  //     },
+  //   ],
+  // };
 
+  //? REPLACE this.state with this.props to grab Users.js API props from App.js
   render() {
     return (
       <div style={userStyle}>
         {/* loop create user divs */}
-        {this.state.users.map((u) => (
+        {this.props.users.map((u) => (
           // key attr for unique check
           // pass in u as a prop called user
           //*Userprop for each
