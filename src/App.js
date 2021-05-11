@@ -24,7 +24,6 @@ class App extends Component {
   //* Lifecycle Method: exec when component mounted
   async componentDidMount() {
     console.log("App Component Mounted");
-    console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET);
     console.log(process.env.REACT_APP_GITHUB_CLIENT_ID);
 
     //* Set State, true = fetching
