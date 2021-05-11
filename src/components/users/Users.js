@@ -3,6 +3,8 @@ import React from "react";
 import UserItem from "./UserItem";
 //* grab Spinner, Users.js is Spinner's wrapper
 import Spinner from "../layout/Spinner";
+//? short: impt
+import PropTypes from "prop-types";
 
 //?Removed State so change to Functional
 //* Destructure props App.js passed in
@@ -25,6 +27,12 @@ const Users = ({ users, loading }) => {
       </div>
     );
   }
+};
+
+//* Default and Types
+Users.propTypes = {
+  users: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 //* Declare inline styles, This will be a wrapper grid
