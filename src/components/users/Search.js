@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export class Search extends Component {
   //* When using a Form, Want to attach State to inputs
