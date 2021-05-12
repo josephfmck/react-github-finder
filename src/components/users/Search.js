@@ -18,7 +18,16 @@ export class Search extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    console.log(this.state.text);
+    console.log(`Search Form Text ${this.state.text}`);
+
+    // PASS this.state.text UP to <App/>.
+    //* GRABING/USING <App/>'s method
+    //TODO In <App/>: <Search searchUsers={this.searchUsersMethodAppJS}/>
+    //*passing UP this.state.text as a Prop
+    this.props.searchUsersMethodAppJSProp(this.state.text);
+
+    //clear state / form input's text
+    this.setState({ text: "" });
   };
 
   render() {

@@ -43,18 +43,20 @@ class App extends Component {
     this.setState({ users: res.data, loading: false });
   }
 
+  //* Submit Event Handler, searches users with form text
+  searchUsersMethodAppJS = (searchText) => {
+    console.log(`searchUserMethodAppJS(${searchText})`);
+  };
+
   //* Lifecycle Method: render()
   render() {
     //* IN RETURN: JS {}, COMMENT {/* */}
 
     return (
       <div className='App'>
-        {/* <Navbar title='Github Finder' icon='fab fa-github' /> */}
-
-        {/** Default Props: when title and icon are not written, When 'title'="Github Binder" written it overwrites default title*/}
         <Navbar title='Github Binder' />
         <div className='container'>
-          <Search />
+          <Search searchUsersMethodAppJSProp={this.searchUsersMethodAppJS} />
           {/* pass state as Users props */}
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
