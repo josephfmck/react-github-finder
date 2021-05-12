@@ -31,7 +31,7 @@ export class Search extends Component {
     // PASS this.state.text UP to <App/>.
     //* GRABING/USING <App/>'s method
     //TODO In <App/>: <Search searchUsers={this.searchUsersMethodAppJS}/>
-    //*passing UP this.state.text as a Prop
+    //*passing UP this.state.text? as a Prop
     this.props.searchUsersMethodAppJSProp(this.state.text);
 
     //clear state / form input's text
@@ -39,6 +39,9 @@ export class Search extends Component {
   };
 
   render() {
+    //* Destructure return's <Search/> props
+    const { showClearBtnBoolProp, clearUsersMethodAppJSProp } = this.props;
+
     return (
       <div>
         {/* onSubmit Event exec onSubmit() */}
@@ -59,10 +62,10 @@ export class Search extends Component {
         </form>
         {/* sending this clear method UP to <App/> */}
         {/* ternary if showClear true render btn */}
-        {this.props.showClearBtnBoolProp && (
+        {showClearBtnBoolProp && (
           <button
             className='btn btn-light btn-block'
-            onClick={this.props.clearUsersMethodAppJSProp}
+            onClick={clearUsersMethodAppJSProp}
           >
             Clear
           </button>
