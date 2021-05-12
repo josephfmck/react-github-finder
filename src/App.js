@@ -69,8 +69,10 @@ class App extends Component {
 
   //* Lifecycle Method: render()
   render() {
-    //* IN RETURN: JS {}, COMMENT {/* */}
+    //* Destructure Props and State HERE
+    const { users, loading } = this.state;
 
+    //* IN RETURN: JS {}, COMMENT {/* */}
     return (
       <div className='App'>
         <Navbar title='Github Binder' />
@@ -79,10 +81,10 @@ class App extends Component {
           <Search
             searchUsersMethodAppJSProp={this.searchUsersMethodAppJS}
             clearUsersMethodAppJSProp={this.clearUsersMethodAppJS}
-            showClearBtnBoolProp={this.state.users.length > 0 ? true : false}
+            showClearBtnBoolProp={users.length > 0 ? true : false}
           />
           {/* pass state as Users props */}
-          <Users loading={this.state.loading} users={this.state.users} />
+          <Users loading={loading} users={users} />
         </div>
       </div>
     );
