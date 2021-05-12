@@ -6,6 +6,11 @@ export class Search extends Component {
     text: "",
   };
 
+  //?Need static for class?
+  static propTypes = {
+    searchUsersMethodAppJSProp: PropTypes.func.isRequired,
+  };
+
   //* EVENTS
   //*OnChange Event, type into search input
   //? if have lots of inputs: name, email, etc.

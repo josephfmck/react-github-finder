@@ -47,10 +47,14 @@ class App extends Component {
   searchUsersMethodAppJS = async (searchText) => {
     console.log(`searchUserMethodAppJS(${searchText})`);
 
+    this.setState({ loading: true });
+
     //* Search with text, and different endpoint search
     const res = await axios.get(
       `https://api.github.com/search/users?q=${searchText}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
+
+    console.log(res);
 
     //* Set State, AFTER FETCH
     //? data.items
