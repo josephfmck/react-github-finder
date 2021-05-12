@@ -6,9 +6,10 @@ export class Search extends Component {
     text: "",
   };
 
-  //?Need static for class?
+  //?Class Needs static for propTypes
   static propTypes = {
     searchUsersMethodAppJSProp: PropTypes.func.isRequired,
+    clearUsersMethodAppJSProp: PropTypes.func.isRequired,
   };
 
   //* EVENTS
@@ -54,6 +55,13 @@ export class Search extends Component {
             className='btn btn-dark btn-block'
           />
         </form>
+        {/* sending this method UP to <App/> */}
+        <button
+          className='btn btn-light btn-block'
+          onClick={this.props.clearUsersMethodAppJSProp}
+        >
+          Clear
+        </button>
       </div>
     );
   }

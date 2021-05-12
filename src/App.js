@@ -61,6 +61,12 @@ class App extends Component {
     this.setState({ users: res.data.items, loading: false });
   };
 
+  //* Clear users from State
+  clearUsersMethodAppJS = () => {
+    //clear users and dont render loading img
+    this.setState({ users: [], loading: false });
+  };
+
   //* Lifecycle Method: render()
   render() {
     //* IN RETURN: JS {}, COMMENT {/* */}
@@ -69,7 +75,11 @@ class App extends Component {
       <div className='App'>
         <Navbar title='Github Binder' />
         <div className='container'>
-          <Search searchUsersMethodAppJSProp={this.searchUsersMethodAppJS} />
+          {/* prop methods passed up from <Search/> */}
+          <Search
+            searchUsersMethodAppJSProp={this.searchUsersMethodAppJS}
+            clearUsersMethodAppJSProp={this.clearUsersMethodAppJS}
+          />
           {/* pass state as Users props */}
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
