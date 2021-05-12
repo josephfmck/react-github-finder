@@ -43,9 +43,18 @@ class App extends Component {
     this.setState({ users: res.data, loading: false });
   }
 
-  //* Submit Event Handler, searches users with form text
-  searchUsersMethodAppJS = (searchText) => {
+  //* Submit Event Handler, searches API users with form text
+  searchUsersMethodAppJS = async (searchText) => {
     console.log(`searchUserMethodAppJS(${searchText})`);
+
+    //* Search with text, and different endpoint search
+    const res = await axios.get(
+      `https://api.github.com/search/users?q=${searchText}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    //* Set State, AFTER FETCH
+    //? data.items
+    this.setState({ users: res.data.items, loading: false });
   };
 
   //* Lifecycle Method: render()
