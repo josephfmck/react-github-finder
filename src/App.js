@@ -79,6 +79,7 @@ class App extends Component {
           <Search
             searchUsersMethodAppJSProp={this.searchUsersMethodAppJS}
             clearUsersMethodAppJSProp={this.clearUsersMethodAppJS}
+            showClearBtnBoolProp={this.state.users.length > 0 ? true : false}
           />
           {/* pass state as Users props */}
           <Users loading={this.state.loading} users={this.state.users} />

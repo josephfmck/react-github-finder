@@ -11,6 +11,7 @@ export class Search extends Component {
   static propTypes = {
     searchUsersMethodAppJSProp: PropTypes.func.isRequired,
     clearUsersMethodAppJSProp: PropTypes.func.isRequired,
+    showClearBtnBoolProp: PropTypes.bool.isRequired,
   };
 
   //* EVENTS
@@ -56,13 +57,16 @@ export class Search extends Component {
             className='btn btn-dark btn-block'
           />
         </form>
-        {/* sending this method UP to <App/> */}
-        <button
-          className='btn btn-light btn-block'
-          onClick={this.props.clearUsersMethodAppJSProp}
-        >
-          Clear
-        </button>
+        {/* sending this clear method UP to <App/> */}
+        {/* ternary if showClear true render btn */}
+        {this.props.showClearBtnBoolProp && (
+          <button
+            className='btn btn-light btn-block'
+            onClick={this.props.clearUsersMethodAppJSProp}
+          >
+            Clear
+          </button>
+        )}
       </div>
     );
   }
