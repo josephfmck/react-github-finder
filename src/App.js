@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Navbar";
 // import UserItem from "./components/users/UserItem";
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
+import Alert from "./components/layout/Alert";
 import axios from "axios";
 
 //*LAST main css for every component
@@ -84,6 +85,8 @@ class App extends Component {
       <div className='App'>
         <Navbar title='Github Binder' />
         <div className='container'>
+          {/* pass in alert state as prop */}
+          <Alert alertProp={this.state.alert} />
           {/* prop methods passed up from <Search/> */}
           <Search
             searchUsersMethodAppJSProp={this.searchUsersMethodAppJS}
