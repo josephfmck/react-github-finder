@@ -73,6 +73,11 @@ class App extends Component {
   setAlertMethodAppJS = (msg, type) => {
     //* Set alert state to obj msg: msg passed in
     this.setState({ alert: { msg: msg, type: type } });
+
+    //* Clear alert obj after 5 secs
+    setTimeout(() => {
+      this.setState({ alert: null });
+    }, 5000);
   };
 
   //* Lifecycle Method: render()
