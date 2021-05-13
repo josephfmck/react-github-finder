@@ -1,6 +1,7 @@
 //* 1ST import React so extends work for class
 //? By destructuring Component from React at import
 import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //* COMPONENTS
 import Navbar from "./components/layout/Navbar";
 // import UserItem from "./components/users/UserItem";
@@ -87,22 +88,37 @@ class App extends Component {
 
     //* IN RETURN: JS {}, COMMENT {/* */}
     return (
-      <div className='App'>
-        <Navbar title='Github Binder' />
-        <div className='container'>
-          {/* pass in alert state as prop */}
-          <Alert alertProp={this.state.alert} />
-          {/* prop methods passed up from <Search/> */}
-          <Search
-            searchUsersMethodAppJSProp={this.searchUsersMethodAppJS}
-            clearUsersMethodAppJSProp={this.clearUsersMethodAppJS}
-            showClearBtnBoolProp={users.length > 0 ? true : false}
-            setAlertMethodAppJSProp={this.setAlertMethodAppJS}
-          />
-          {/* pass state as Users props */}
-          <Users loading={loading} users={users} />
+      //* Wrap in Router to use routes
+      <Router>
+        <div className='App'>
+          <Navbar title='Github Binder' />
+          <div className='container'>
+            {/* pass in alert state as prop */}
+            <Alert alertProp={this.state.alert} />
+            {/* Switch show one Route at a time */}
+            <Switch>
+              {/* Route home exact path /, render  */}
+              <Route
+                exact
+                path='/'
+                render={(props) => (
+                  <Fragment>
+                    {/* prop methods passed up from <Search/> */}
+                    <Search
+                      searchUsersMethodAppJSProp={this.searchUsersMethodAppJS}
+                      clearUsersMethodAppJSProp={this.clearUsersMethodAppJS}
+                      showClearBtnBoolProp={users.length > 0 ? true : false}
+                      setAlertMethodAppJSProp={this.setAlertMethodAppJS}
+                    />
+                    {/* pass state as Users props */}
+                    <Users loading={loading} users={users} />
+                  </Fragment>
+                )}
+              />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
