@@ -2,6 +2,7 @@
 //?creates this class component
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 //? To Use fontawesome icon: in public/index.html add link
 
@@ -13,6 +14,15 @@ const Navbar = ({ icon, title }) => {
         {/* Grab Navbar Prop 'title' from App.js using {props.title} */}
         <i className={icon}></i> {title}
       </h1>
+      {/* Nav Links: DONT USE aTags */}
+      <ul>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/about'>About</Link>
+        </li>
+      </ul>
     </nav>
   );
 };
