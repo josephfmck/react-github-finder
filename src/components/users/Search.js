@@ -12,6 +12,7 @@ export class Search extends Component {
     searchUsersMethodAppJSProp: PropTypes.func.isRequired,
     clearUsersMethodAppJSProp: PropTypes.func.isRequired,
     showClearBtnBoolProp: PropTypes.bool.isRequired,
+    setAlertMethodAppJSProp: PropTypes.func.isRequired,
   };
 
   //* EVENTS
@@ -26,16 +27,21 @@ export class Search extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    console.log(`Search Form Text ${this.state.text}`);
+    //* Check search text not empty, light type alert
+    if (this.state.text === "") {
+      //* setAlert() prop from <Search/> in <App/>
+      this.props.setAlertMethodAppJSProp("Please enter something", "light");
+    } else {
+      console.log(`Search Form Text ${this.state.text}`);
+      // PASS this.state.text UP to <App/>.
+      //* GRABING/USING <App/>'s method
+      //TODO In <App/>: <Search searchUsers={this.searchUsersMethodAppJS}/>
+      //*passing UP this.state.text? as a Prop
+      this.props.searchUsersMethodAppJSProp(this.state.text);
 
-    // PASS this.state.text UP to <App/>.
-    //* GRABING/USING <App/>'s method
-    //TODO In <App/>: <Search searchUsers={this.searchUsersMethodAppJS}/>
-    //*passing UP this.state.text? as a Prop
-    this.props.searchUsersMethodAppJSProp(this.state.text);
-
-    //clear state / form input's text
-    this.setState({ text: "" });
+      //clear state / form input's text
+      this.setState({ text: "" });
+    }
   };
 
   render() {

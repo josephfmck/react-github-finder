@@ -18,6 +18,7 @@ class App extends Component {
   state = {
     users: [],
     loading: false,
+    alert: null,
   };
 
   //* Class Methods GO HERE, have to use 'this'
@@ -67,6 +68,12 @@ class App extends Component {
     this.setState({ users: [], loading: false });
   };
 
+  //* Set Alert
+  setAlertMethodAppJS = (msg, type) => {
+    //* Set alert state to obj msg: msg passed in
+    this.setState({ alert: { msg: msg, type: type } });
+  };
+
   //* Lifecycle Method: render()
   render() {
     //* Destructure Props and State HERE
@@ -82,6 +89,7 @@ class App extends Component {
             searchUsersMethodAppJSProp={this.searchUsersMethodAppJS}
             clearUsersMethodAppJSProp={this.clearUsersMethodAppJS}
             showClearBtnBoolProp={users.length > 0 ? true : false}
+            setAlertMethodAppJSProp={this.setAlertMethodAppJS}
           />
           {/* pass state as Users props */}
           <Users loading={loading} users={users} />
