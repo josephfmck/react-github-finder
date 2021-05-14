@@ -76,7 +76,7 @@ class App extends Component {
       `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
 
-    console.log(res);
+    console.log("getUser res", res);
 
     //* Set user obj State, AFTER FETCH
     this.setState({ user: res.data, loading: false });
@@ -139,6 +139,7 @@ class App extends Component {
               {/* () is an implicit return */}
               {/* ...props all props passed in */}
               {/* set userProp=userState */}
+              {/* getUser(loginProp) execs inside User.js grabbing/setting user State to API data; THEN pass user State in as prop for <User/> to use */}
               <Route
                 exact
                 path='/user/:login'
