@@ -1,10 +1,11 @@
 import React from "react";
 //*SINCE ({user prop}) passed in, NEED UserItem.js propTypes
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 //* Switch from Class to Function Component
 //* Functional Component: Doesn't need render(), Don't use this.props to grab props, instead pass in (props)
-//* Destructure User.js props: {user: { login, etc. }}
+//* Destructure User.js props: {user: { login, etc. }} FROM App.js
 const UserItem = ({ user: { login, avatar_url, html_url } }) => {
   //*? REPLACE Destructure Users.js props
   //const { login, avatar_url, html_url } = props.user;
@@ -20,10 +21,10 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
       />
       <h3>{login}</h3>
       <div>
-        <a
-          href={html_url}
-          className='btn btn-dark btn-sm my-1'
-        >{`${html_url}`}</a>
+        {/* change to Link to User.js login=username passed in=prop of user propObj from App.js State */}
+        <Link to={`/user/${login}`} className='btn btn-dark btn-sm my-1'>
+          More
+        </Link>
       </div>
     </div>
   );

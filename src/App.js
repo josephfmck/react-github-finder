@@ -147,6 +147,7 @@ class App extends Component {
                     {...props}
                     getUserMethodAppJSProp={this.getUserMethodAppJS}
                     user={user}
+                    loading={loading}
                   />
                 )}
               />
