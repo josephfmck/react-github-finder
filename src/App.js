@@ -9,6 +9,7 @@ import Users from "./components/users/Users";
 import Search from "./components/users/Search";
 import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
+import User from "./components/users/User";
 import axios from "axios";
 
 //*LAST main css for every component
@@ -101,7 +102,7 @@ class App extends Component {
   //* Lifecycle Method: render()
   render() {
     //* Destructure Props and State HERE
-    const { users, loading } = this.state;
+    const { users, loading, user } = this.state;
 
     //* IN RETURN: JS {}, COMMENT {/* */}
     return (
@@ -132,8 +133,23 @@ class App extends Component {
                   </Fragment>
                 )}
               />
-              {/* About Route, 1 component so no render, just component={About}*/}
+              {/* About Route, 1 component with no props so no render, just component={About}*/}
               <Route exact path='/about' component={About} />
+              {/* User Route, login=username passed in, render needed since using props */}
+              {/* () is an implicit return */}
+              {/* ...props all props passed in */}
+              {/* set userProp=userState */}
+              <Route
+                exact
+                path='/user/:login'
+                render={(props) => (
+                  <User
+                    {...props}
+                    getUserMethodAppJSProp={this.getUserMethodAppJS}
+                    user={user}
+                  />
+                )}
+              />
             </Switch>
           </div>
         </div>
