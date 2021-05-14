@@ -9,7 +9,25 @@ export class user extends Component {
   }
 
   render() {
-    return <div>User</div>;
+    //* Destructure from user prop obj
+    const {
+      name,
+      avatar_url,
+      location,
+      bio,
+      blog,
+      login,
+      html_url,
+      followers,
+      following,
+      public_repos,
+      public_gists,
+      hireable,
+    } = this.props.user;
+
+    //grab from props
+    const { loading } = this.props;
+    return <div>{name}</div>;
   }
 }
 
