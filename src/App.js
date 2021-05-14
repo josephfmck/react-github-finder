@@ -22,6 +22,7 @@ class App extends Component {
     users: [],
     loading: false,
     alert: null,
+    user: {},
   };
 
   //* Class Methods GO HERE, have to use 'this'
@@ -60,9 +61,24 @@ class App extends Component {
 
     console.log(res);
 
-    //* Set State, AFTER FETCH
+    //* Set users State, AFTER FETCH
     //? data.items
     this.setState({ users: res.data.items, loading: false });
+  };
+
+  //* Get single Github user
+  getUserMethodAppJS = async (username) => {
+    this.setState({ loading: true });
+
+    //* Search with text, /users/username
+    const res = await axios.get(
+      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    console.log(res);
+
+    //* Set user obj State, AFTER FETCH
+    this.setState({ user: res.data, loading: false });
   };
 
   //* Clear users from State
