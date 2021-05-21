@@ -46,6 +46,14 @@ export class user extends Component {
         <Link to='/' className='btn btn-light'>
           Back To Search
         </Link>
+        {/* {' '} is just space */}
+        {/* true show check, else X mark */}
+        Hireable:{" "}
+        {hireable ? (
+          <i className='fas fa-check text-success' />
+        ) : (
+          <i className='fas fa-times-circle text-danger' />
+        )}
       </Fragment>
     );
   }
