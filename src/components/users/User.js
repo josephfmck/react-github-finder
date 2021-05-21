@@ -10,12 +10,14 @@ export class user extends Component {
     //*this.props.match.params.login pulled from URL path='/user/:login' passed in and exec with getUser
     //? props from <App/>
     this.props.getUserMethodAppJSProp(this.props.match.params.login);
+    this.props.getUserReposMethodAppJSProp(this.props.match.param.login);
   }
 
   static propTypes = {
     loading: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,
     getUserMethodAppJSProp: PropTypes.func.isRequired,
+    getUserReposMethodAppJSProp: PropTypes.func.isRequired,
   };
 
   render() {
