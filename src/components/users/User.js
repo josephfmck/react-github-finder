@@ -22,6 +22,7 @@ export class user extends Component {
     //* Destructure from user prop obj
     const {
       name,
+      company,
       avatar_url,
       location,
       bio,
@@ -74,6 +75,29 @@ export class user extends Component {
             <a href={html_url} className='btn btn-dark my-1'>
               Visit Github Profile
             </a>
+            <ul>
+              <li>
+                {login && (
+                  <Fragment>
+                    <strong>Username: {login}</strong>
+                  </Fragment>
+                )}
+              </li>
+              <li>
+                {company && (
+                  <Fragment>
+                    <strong>Company: {company}</strong>
+                  </Fragment>
+                )}
+              </li>
+              <li>
+                {blog && (
+                  <Fragment>
+                    <strong>Website: {blog}</strong>
+                  </Fragment>
+                )}
+              </li>
+            </ul>
           </div>
         </div>
       </Fragment>
