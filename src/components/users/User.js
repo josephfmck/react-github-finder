@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Spinner from "../layout/Spinner";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 //? No state, needs to use props
 export class user extends Component {
@@ -40,7 +41,13 @@ export class user extends Component {
     //spinner when true
     if (loading) return <Spinner />;
 
-    return <Fragment>{name}</Fragment>;
+    return (
+      <Fragment>
+        <Link to='/' className='btn btn-light'>
+          Back To Search
+        </Link>
+      </Fragment>
+    );
   }
 }
 
