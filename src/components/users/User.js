@@ -37,7 +37,7 @@ export class user extends Component {
     //grab from props
     const { loading } = this.props;
 
-    //run spinner when true
+    //spinner when true
     if (loading) return <Spinner />;
 
     return <Fragment>{name}</Fragment>;
