@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Spinner from "../layout/Spinner";
+import Repos from "../repos/Repos";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -13,11 +14,13 @@ export class user extends Component {
     this.props.getUserReposMethodAppJSProp(this.props.match.params.login);
   }
 
+  //* props all from <App/>
   static propTypes = {
     loading: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,
     getUserMethodAppJSProp: PropTypes.func.isRequired,
     getUserReposMethodAppJSProp: PropTypes.func.isRequired,
+    reposPropAppJS: PropTypes.array.isRequired,
   };
 
   render() {
@@ -39,7 +42,7 @@ export class user extends Component {
     } = this.props.user;
 
     //grab from props
-    const { loading } = this.props;
+    const { loading, reposPropAppJS } = this.props;
 
     //spinner when true
     if (loading) return <Spinner />;
@@ -108,6 +111,7 @@ export class user extends Component {
           <div className='badge badge-light'>Public Repos: {public_repos}</div>
           <div className='badge badge-dark'>Public Gists: {public_gists}</div>
         </div>
+        <Repos reposPropUserJS={reposPropAppJS} />
       </Fragment>
     );
   }

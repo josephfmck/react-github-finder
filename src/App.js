@@ -166,7 +166,7 @@ class App extends Component {
                     user={user}
                     loading={loading}
                     getUserReposMethodAppJSProp={this.getUserReposMethodAppJS}
-                    reposProp={repos}
+                    reposPropAppJS={repos}
                   />
                 )}
               />

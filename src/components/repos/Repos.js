@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import RepoItem from "./RepoItem";
 
-//reposProp from
+//reposProp from <User/>
 //*map through each repo and create RepoItem passing in each repo as repoProp
-const Repos = ({ reposProp }) => {
-  return reposProp.map((repo) => <RepoItem repoProp={repo} key={repo.id} />);
+const Repos = ({ reposPropUserJS }) => {
+  return reposPropUserJS.map((repo) => (
+    <RepoItem repoPropReposJS={repo} key={repo.id} />
+  ));
 };
 
 Repos.propTypes = {
-  reposProp: PropTypes.array.isRequired,
+  reposPropUserJS: PropTypes.array.isRequired,
 };
 
 export default Repos;
