@@ -61,6 +61,8 @@ export class user extends Component {
               className='round-img'
               style={{ width: "150px" }}
             />
+            <h1>{name}</h1>
+            <p>Location: {location}</p>
           </div>
         </div>
       </Fragment>
