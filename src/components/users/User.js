@@ -47,7 +47,7 @@ export class user extends Component {
         <Link to='/' className='btn btn-light'>
           Back To Search
         </Link>
-        {/* {' '} is just space */}
+        {/* {' '} is just a space */}
         {/* true show check, else X mark */}
         Hireable:{" "}
         {hireable ? (
