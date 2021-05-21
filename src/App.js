@@ -118,7 +118,7 @@ class App extends Component {
   //* Lifecycle Method: render()
   render() {
     //* Destructure Props and State HERE
-    const { users, loading, user } = this.state;
+    const { users, user, repos, loading } = this.state;
 
     //* IN RETURN: JS {}, COMMENT {/* */}
     return (
@@ -165,6 +165,8 @@ class App extends Component {
                     getUserMethodAppJSProp={this.getUserMethodAppJS}
                     user={user}
                     loading={loading}
+                    getUserReposMethodAppJSProp={this.getUserReposMethodAppJS}
+                    reposProp={repos}
                   />
                 )}
               />
