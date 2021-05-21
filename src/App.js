@@ -21,9 +21,10 @@ class App extends Component {
   //? while fetching loading: true, once fetched false
   state = {
     users: [],
+    user: {},
+    repos: [],
     loading: false,
     alert: null,
-    user: {},
   };
 
   //* Class Methods GO HERE, have to use 'this'
@@ -80,6 +81,21 @@ class App extends Component {
 
     //* Set user obj State, AFTER FETCH
     this.setState({ user: res.data, loading: false });
+  };
+
+  //* Get user's repos
+  getUserReposMethodAppJS = async (username) => {
+    this.setState({ loading: true });
+
+    //* Search repos endpoint, 5 per page, sort by most recent (ascending)
+    const res = await axios.get(
+      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    console.log("getUserRepos res", res);
+
+    //* Set repos arr State, AFTER FETCH
+    this.setState({ repos: res.data, loading: false });
   };
 
   //* Clear users from State
