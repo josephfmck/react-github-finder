@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 //* Switch from Class to Function Component
 //* Functional Component: Doesn't need render(), Don't use this.props to grab props, instead pass in (props)
 //* Destructure User.js props: {user: { login, etc. }} FROM App.js
+//? Destructure prop from <Users/>
 const UserItem = ({ user: { login, avatar_url, html_url } }) => {
   //*? REPLACE Destructure Users.js props
   //const { login, avatar_url, html_url } = props.user;

@@ -1,12 +1,21 @@
-import React, { Component } from "react";
-//? No state, needs to use LifeCycle ComponentDidMount() to exec getUserMethod in App.js
+import React, { Component, Fragment } from "react";
+import Spinner from "../layout/Spinner";
+import PropTypes from "prop-types";
 
+//? No state, needs to use props
 export class user extends Component {
   //*Exec when component loaded
   componentDidMount() {
-    //*this.props.match.params.login pulled from URL path='/user/:login' matching login param
+    //*this.props.match.params.login pulled from URL path='/user/:login' passed in and exec with getUser
+    //? props from <App/>
     this.props.getUserMethodAppJSProp(this.props.match.params.login);
   }
+
+  static propTypes = {
+    loading: PropTypes.bool.isRequired,
+    user: PropTypes.object.isRequired,
+    getUserMethodAppJSProp: PropTypes.func.isRequired,
+  };
 
   render() {
     //* Destructure from user prop obj
@@ -27,7 +36,11 @@ export class user extends Component {
 
     //grab from props
     const { loading } = this.props;
-    return <div>{name}</div>;
+
+    //run spinner when true
+    if (loading) return <Spinner />;
+
+    return <Fragment>{name}</Fragment>;
   }
 }
 
