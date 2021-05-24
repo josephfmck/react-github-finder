@@ -1,1 +1,2 @@
-//all actions like fetch data
+//Init State
+//actions like search users from github
