@@ -7,6 +7,8 @@ import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 import User from "./components/users/User";
 import axios from "axios";
+
+import GithubState from "./context/github/GithubState";
 //*main css for every component
 import "./App.css";
 
@@ -93,59 +95,62 @@ const App = () => {
 
   //* IN RETURN: JS {}, COMMENT {/* */}
   return (
-    //* Wrap in Router to use routes
-    <Router>
-      <div className='App'>
-        <Navbar title='Github Binder' />
-        <div className='container'>
-          {/* pass in alert state as prop */}
-          <Alert alertProp={alert} />
-          {/* Switch show one Route at a time */}
-          <Switch>
-            {/* Route home exact path /, render  */}
-            <Route
-              exact
-              path='/'
-              render={(props) => (
-                <Fragment>
-                  {/* methods passed in to <Search/> props */}
-                  <Search
-                    searchUsersMethodAppJSProp={searchUsersMethodAppJS}
-                    clearUsersMethodAppJSProp={clearUsersMethodAppJS}
-                    showClearBtnBoolProp={users.length > 0 ? true : false}
-                    setAlertMethodAppJSProp={setAlertMethodAppJS}
-                  />
-                  {/* pass state as Users props */}
-                  <Users loading={loading} users={users} />
-                </Fragment>
-              )}
-            />
-            {/* About Route, 1 component with no props so no render, just component={About}*/}
-            <Route exact path='/about' component={About} />
+    //* Wrap in GithubState Provider to use ContextAPI
+    <GithubState>
+      //* Wrap in Router to use routes
+      <Router>
+        <div className='App'>
+          <Navbar title='Github Binder' />
+          <div className='container'>
+            {/* pass in alert state as prop */}
+            <Alert alertProp={alert} />
+            {/* Switch show one Route at a time */}
+            <Switch>
+              {/* Route home exact path /, render  */}
+              <Route
+                exact
+                path='/'
+                render={(props) => (
+                  <Fragment>
+                    {/* methods passed in to <Search/> props */}
+                    <Search
+                      searchUsersMethodAppJSProp={searchUsersMethodAppJS}
+                      clearUsersMethodAppJSProp={clearUsersMethodAppJS}
+                      showClearBtnBoolProp={users.length > 0 ? true : false}
+                      setAlertMethodAppJSProp={setAlertMethodAppJS}
+                    />
+                    {/* pass state as Users props */}
+                    <Users loading={loading} users={users} />
+                  </Fragment>
+                )}
+              />
+              {/* About Route, 1 component with no props so no render, just component={About}*/}
+              <Route exact path='/about' component={About} />
 
-            {/* User Route, login=username passed in, render needed since using props */}
-            {/* () implicit return */}
-            {/* ...props all props from API user state obj */}
-            {/* set userProp=userState */}
-            {/* getUser(loginProp) execs inside User.js setting user State to API data; THEN pass user State in as prop for <User/> to use */}
-            <Route
-              exact
-              path='/user/:login'
-              render={(props) => (
-                <User
-                  {...props}
-                  getUserMethodAppJSProp={getUserMethodAppJS}
-                  user={user}
-                  loading={loading}
-                  getUserReposMethodAppJSProp={getUserReposMethodAppJS}
-                  reposPropAppJS={repos}
-                />
-              )}
-            />
-          </Switch>
+              {/* User Route, login=username passed in, render needed since using props */}
+              {/* () implicit return */}
+              {/* ...props all props from API user state obj */}
+              {/* set userProp=userState */}
+              {/* getUser(loginProp) execs inside User.js setting user State to API data; THEN pass user State in as prop for <User/> to use */}
+              <Route
+                exact
+                path='/user/:login'
+                render={(props) => (
+                  <User
+                    {...props}
+                    getUserMethodAppJSProp={getUserMethodAppJS}
+                    user={user}
+                    loading={loading}
+                    getUserReposMethodAppJSProp={getUserReposMethodAppJS}
+                    reposPropAppJS={repos}
+                  />
+                )}
+              />
+            </Switch>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </GithubState>
   );
 };
 

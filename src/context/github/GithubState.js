@@ -24,7 +24,7 @@ const GithubState = (props) => {
 
   //action makes request to API then
   //dispatch a type back to reducer
-  const [state, dispatch] = userReducer(GithubReducer, initialState);
+  const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   //*Actions
   //  Search Users
