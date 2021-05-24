@@ -48,6 +48,11 @@ const GithubState = (props) => {
         repos: state.repos,
         loading: state.loading,
       }}
-    ></GithubContext.Provider>
+    >
+      {/* wrap provider around children */}
+      {props.children}
+    </GithubContext.Provider>
   );
 };
+
+export default GithubState;
