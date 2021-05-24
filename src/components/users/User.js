@@ -14,7 +14,6 @@ const User = ({
   match,
 }) => {
   //*Replace Lifecycle componentDidMount()
-
   //*Exec when component loaded
   //? useEffect will constantly run in loop so add [] for conditions to run once, or add state in there for when state is change
   useEffect(() => {
