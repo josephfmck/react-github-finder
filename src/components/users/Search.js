@@ -5,6 +5,7 @@ const Search = ({
   searchUsersMethodAppJSProp,
   showClearBtnBoolProp,
   clearUsersMethodAppJSProp,
+  setAlertMethodAppJSProp,
 }) => {
   //Destructure State,    text=state setText=method to change state
   // set text to "" with useState, NOW we can use
@@ -12,40 +13,38 @@ const Search = ({
 
   //* EVENTS
   //*OnChange Event, type into search input
-  //? if have lots of inputs: name, email, etc.
-  //* Use name attr to set all [e.target.name], [] to dynamic update object properties
   const onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    setText(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     //* Check search text not empty, light type alert
-    if (this.state.text === "") {
+    if (text === "") {
       //* setAlert() <Search/> prop from <App/>
-      this.props.setAlertMethodAppJSProp("Please enter something", "light");
+      setAlertMethodAppJSProp("Please enter something", "light");
     } else {
-      console.log(`Search Form Text ${this.state.text}`);
-      //*exec with this.state.text
-      this.props.searchUsersMethodAppJSProp(this.state.text);
+      console.log(`Search Form Text ${text}`);
+      //*exec with state text
+      searchUsersMethodAppJSProp(text);
 
       //clear form input's text
-      this.setState({ text: "" });
+      setText("");
     }
   };
 
   return (
     <div>
       {/* onSubmit Event exec onSubmit() */}
-      <form onSubmit={this.onSubmit} className='form'>
+      <form onSubmit={onSubmit} className='form'>
         {/* set text val to state, NEED onchange event to change text/state  */}
         <input
           type='text'
           name='text'
           placeholder='Search Users...'
-          value={this.state.text}
-          onChange={this.onChange}
+          value={text}
+          onChange={onChange}
         />
         <input
           type='submit'
