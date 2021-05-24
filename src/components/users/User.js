@@ -21,6 +21,9 @@ const User = ({
     //*match.params.login pulled from URL path='/user/:login'
     getUserMethodAppJSProp(match.params.login);
     getUserReposMethodAppJSProp(match.params.login);
+
+    //? to remove eslint warning for methods to be dependencies [getuser, etc.]
+    // eslint-disable-next-line
   }, []);
 
   //* Destructure from user prop obj
