@@ -1,3 +1,4 @@
+//USING JS NOT A COMPONENT
 import { createContext } from "react";
 
 //Init githubContext

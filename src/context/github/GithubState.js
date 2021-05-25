@@ -24,6 +24,8 @@ const GithubState = (props) => {
 
   //action makes request to API then
   //dispatch a type back to reducer
+  //* returns [ state from initialState passed in, dispatch - func call to update state, calls reducer given certain params ]
+  //* useReducer(reducer - func that performs on state to get new state, initialState obj )
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   //*Actions
@@ -39,7 +41,8 @@ const GithubState = (props) => {
 
   //* return provider
   //wrap entire app with Provider
-  //value prop - everything available to entire app
+  //value prop - context - everything available to entire app
+  //everything wrapped with provider has access to value prop
   return (
     <GithubContext.Provider
       value={{
@@ -49,8 +52,9 @@ const GithubState = (props) => {
         loading: state.loading,
       }}
     >
-      {/* wrap provider around children */}
+      {/* children */}
       {props.children}
+      {`GithubState.js props.children - ${console.log(props.children)}`}
     </GithubContext.Provider>
   );
 };
