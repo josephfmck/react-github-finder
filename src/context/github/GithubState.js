@@ -33,7 +33,7 @@ const GithubState = (props) => {
   const searchUsersMethodAppJS = async (searchText) => {
     console.log(`searchUserMethodAppJS(${searchText})`);
 
-    //exec dispatched SET_LOADING
+    //*exec dispatched SET_LOADING to Reducer, dont need to pass in true or false, only called once
     setLoading();
 
     //* Search with text, and endpoint search
@@ -43,10 +43,12 @@ const GithubState = (props) => {
 
     console.log(res);
 
-    //* Set users State
-    //? data.items from API
-    setUsers(res.data.items);
-    setLoading(false);
+    //*Dispatches SEARCH_USERS with API data
+    //*reducer will put data into state and sending it down to components
+    dispatch({
+      type: SEARCH_USERS,
+      payload: res.data,
+    });
   };
 
   //  Get User
