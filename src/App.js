@@ -24,25 +24,6 @@ const App = () => {
 
   //* Methods
 
-  //* Submit Event Handler, searches API users with form text
-  const searchUsersMethodAppJS = async (searchText) => {
-    console.log(`searchUserMethodAppJS(${searchText})`);
-
-    setLoading(true);
-
-    //* Search with text, and different endpoint search
-    const res = await axios.get(
-      `https://api.github.com/search/users?q=${searchText}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-
-    console.log(res);
-
-    //* Set users State, AFTER FETCH
-    //? data.items from API
-    setUsers(res.data.items);
-    setLoading(false);
-  };
-
   //* Get single Github user
   const getUserMethodAppJS = async (username) => {
     setLoading(true);
@@ -95,9 +76,9 @@ const App = () => {
 
   //* IN RETURN: JS {}, COMMENT {/* */}
   return (
-    //* Wrap in GithubState Provider to use ContextAPI
+    // * Wrap in GithubState Provider to use ContextAPI
     <GithubState>
-      //* Wrap in Router to use routes
+      {/* //* Wrap in Router to use routes */}
       <Router>
         <div className='App'>
           <Navbar title='Github Binder' />

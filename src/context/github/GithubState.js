@@ -22,14 +22,32 @@ const GithubState = (props) => {
     loading: false,
   };
 
-  //action makes request to API then
-  //dispatch a type back to reducer
   //* returns [ state from initialState passed in, dispatch - func call to update state, calls reducer given certain params ]
   //* useReducer(reducer - func that performs on state to get new state, initialState obj )
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   //*Actions
-  //  Search Users
+  //action makes request to API then
+  //dispatch a type back to reducer
+  //* Submit Event Handler, searches API users with form text
+  const searchUsersMethodAppJS = async (searchText) => {
+    console.log(`searchUserMethodAppJS(${searchText})`);
+
+    //exec dispatched SET_LOADING
+    setLoading();
+
+    //* Search with text, and endpoint search
+    const res = await axios.get(
+      `https://api.github.com/search/users?q=${searchText}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    console.log(res);
+
+    //* Set users State
+    //? data.items from API
+    setUsers(res.data.items);
+    setLoading(false);
+  };
 
   //  Get User
 
@@ -37,11 +55,13 @@ const GithubState = (props) => {
 
   //  Clear Users
 
-  //  Set Loading
+  //  Set Loading - sets Loading state
+  //dispatch to githubReducer - obj has to have type
+  const setLoading = () => dispatch({ type: SET_LOADING });
 
   //* return provider
   //wrap entire app with Provider
-  //value prop - context - everything available to entire app
+  //value prop - context - all state available to entire app
   //everything wrapped with provider has access to value prop
   return (
     <GithubContext.Provider
