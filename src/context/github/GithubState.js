@@ -33,7 +33,8 @@ const GithubState = (props) => {
   const searchUsersMethodAppJS = async (searchText) => {
     console.log(`searchUserMethodAppJS(${searchText})`);
 
-    //*exec dispatched SET_LOADING to Reducer, dont need to pass in true or false, only called once
+    //*exec dispatched SET_LOADING from Reducer
+    //sets loading state = true, SEARCH_USERS action will set back to false after api call
     setLoading();
 
     //* Search with text, and endpoint search
