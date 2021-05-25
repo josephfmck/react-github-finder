@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import GithubContext from "../../context/github/githubContext";
-import githubContext from "../../context/github/githubContext";
 
 const Search = ({
   showClearBtnBoolProp,
@@ -9,7 +8,7 @@ const Search = ({
   setAlertMethodAppJSProp,
 }) => {
   //*Init githubContext with hook
-  const githubContext = useContext(githubContext);
+  const githubContext = useContext(GithubContext);
 
   //Destructure State,    text=state setText=method to change state
   // set text to "" with useState, NOW we can use

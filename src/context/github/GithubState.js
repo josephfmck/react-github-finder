@@ -48,7 +48,7 @@ const GithubState = (props) => {
     //*reducer will put data into state and sending it down to components
     dispatch({
       type: SEARCH_USERS,
-      payload: res.data,
+      payload: res.data.items,
     });
   };
 
