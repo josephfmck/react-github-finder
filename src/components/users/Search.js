@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import GithubContext from "../../context/github/githubContext";
+import githubContext from "../../context/github/githubContext";
 
 const Search = ({
-  searchUsersMethodAppJSProp,
   showClearBtnBoolProp,
   clearUsersMethodAppJSProp,
   setAlertMethodAppJSProp,
 }) => {
+  //*Init githubContext with hook
+  const githubContext = useContext(githubContext);
+
   //Destructure State,    text=state setText=method to change state
   // set text to "" with useState, NOW we can use
   const [text, setText] = useState("");
@@ -27,7 +31,7 @@ const Search = ({
     } else {
       console.log(`Search Form Text ${text}`);
       //*exec with state text
-      searchUsersMethodAppJSProp(text);
+      githubContext.searchUsersMethodAppJS(text);
 
       //clear form input's text
       setText("");
@@ -68,7 +72,6 @@ const Search = ({
 
 //Refact: move propTypes outside
 Search.propTypes = {
-  searchUsersMethodAppJSProp: PropTypes.func.isRequired,
   clearUsersMethodAppJSProp: PropTypes.func.isRequired,
   showClearBtnBoolProp: PropTypes.bool.isRequired,
   setAlertMethodAppJSProp: PropTypes.func.isRequired,

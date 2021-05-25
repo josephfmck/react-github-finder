@@ -95,7 +95,6 @@ const App = () => {
                   <Fragment>
                     {/* methods passed in to <Search/> props */}
                     <Search
-                      searchUsersMethodAppJSProp={searchUsersMethodAppJS}
                       clearUsersMethodAppJSProp={clearUsersMethodAppJS}
                       showClearBtnBoolProp={users.length > 0 ? true : false}
                       setAlertMethodAppJSProp={setAlertMethodAppJS}
