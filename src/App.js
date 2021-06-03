@@ -16,10 +16,9 @@ import "./App.css";
 const App = () => {
   //* Create State
   //users = [], set = setState
-  const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   //* Methods
 
@@ -90,9 +89,6 @@ const App = () => {
                 render={(props) => (
                   <User
                     {...props}
-                    getUserMethodAppJSProp={getUserMethodAppJS}
-                    user={user}
-                    loading={loading}
                     getUserReposMethodAppJSProp={getUserReposMethodAppJS}
                     reposPropAppJS={repos}
                   />

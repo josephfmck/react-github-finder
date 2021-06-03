@@ -1,24 +1,24 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useContext } from "react";
 import Spinner from "../layout/Spinner";
 import Repos from "../repos/Repos";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import GithubContext from "../../context/github/githubContext";
 
 //* props passed in
-const User = ({
-  user,
-  loading,
-  reposPropAppJS,
-  getUserReposMethodAppJSProp,
-  getUserMethodAppJSProp,
-  match,
-}) => {
+const User = ({ reposPropAppJS, getUserReposMethodAppJSProp, match }) => {
+  //* Init global State
+  const githubContext = useContext(GithubContext);
+
+  //* Destructure global State
+  const { getUserMethodAppJS, loading, user } = githubContext;
+
   //*Replace Lifecycle componentDidMount()
   //*Exec when component loaded
   //? useEffect will constantly run in loop so add [] for conditions to run once, or add state in there for when state is change
   useEffect(() => {
     //*match.params.login pulled from URL path='/user/:login'
-    getUserMethodAppJSProp(match.params.login);
+    getUserMethodAppJS(match.params.login);
     getUserReposMethodAppJSProp(match.params.login);
 
     //? to remove eslint warning for methods to be dependencies [getuser, etc.]
@@ -116,9 +116,6 @@ const User = ({
 
 //* props all from <App/>
 User.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  user: PropTypes.object.isRequired,
-  getUserMethodAppJSProp: PropTypes.func.isRequired,
   getUserReposMethodAppJSProp: PropTypes.func.isRequired,
   reposPropAppJS: PropTypes.array.isRequired,
 };

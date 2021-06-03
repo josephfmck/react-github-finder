@@ -97,6 +97,7 @@ const GithubState = (props) => {
         loading: state.loading,
         searchUsersMethodAppJS,
         clearUsersMethodAppJS,
+        getUserMethodAppJS,
       }}
     >
       {/* children */}
