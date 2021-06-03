@@ -52,7 +52,23 @@ const GithubState = (props) => {
     });
   };
 
-  //  Get User
+  //* Get single Github user
+  const getUserMethodAppJS = async (username) => {
+    setLoading();
+
+    //* Search with text, /users/username
+    const res = await axios.get(
+      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    console.log("getUser res", res);
+
+    //* Set user obj State, AFTER FETCH
+    dispatch({
+      type: GET_USER,
+      payload: res.data,
+    });
+  };
 
   //  Get Repos
 

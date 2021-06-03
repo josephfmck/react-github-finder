@@ -16,29 +16,12 @@ import "./App.css";
 const App = () => {
   //* Create State
   //users = [], set = setState
-  const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   //* Methods
-
-  //* Get single Github user
-  const getUserMethodAppJS = async (username) => {
-    setLoading(true);
-
-    //* Search with text, /users/username
-    const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-
-    console.log("getUser res", res);
-
-    //* Set user obj State, AFTER FETCH
-    setUser(res.data);
-    setLoading(false);
-  };
 
   //* Get user's repos
   const getUserReposMethodAppJS = async (username) => {
