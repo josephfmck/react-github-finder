@@ -2,11 +2,7 @@ import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import GithubContext from "../../context/github/githubContext";
 
-const Search = ({
-  showClearBtnBoolProp,
-  clearUsersMethodAppJSProp,
-  setAlertMethodAppJSProp,
-}) => {
+const Search = ({ setAlertMethodAppJSProp }) => {
   //*Init githubContext with hook
   //*allows to grab searchUser instead of passing in as prop
   const githubContext = useContext(GithubContext);
@@ -58,10 +54,10 @@ const Search = ({
       </form>
       {/* sending this clear method UP to <App/> */}
       {/* ternary if showClear true render btn */}
-      {showClearBtnBoolProp && (
+      {githubContext.users.length > 0 && (
         <button
           className='btn btn-light btn-block'
-          onClick={clearUsersMethodAppJSProp}
+          onClick={githubContext.clearUsersMethodAppJS}
         >
           Clear
         </button>
@@ -72,8 +68,6 @@ const Search = ({
 
 //Refact: move propTypes outside
 Search.propTypes = {
-  clearUsersMethodAppJSProp: PropTypes.func.isRequired,
-  showClearBtnBoolProp: PropTypes.bool.isRequired,
   setAlertMethodAppJSProp: PropTypes.func.isRequired,
 };
 
