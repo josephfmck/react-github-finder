@@ -59,8 +59,9 @@ const GithubState = (props) => {
   //* Clear users
   const clearUsersMethodAppJS = () => {
     //clear users and dont render loading img
-    setUsers([]);
-    setLoading(false);
+    dispatch({
+      type: CLEAR_USERS,
+    });
   };
 
   //*  Set Loading - sets Loading state
