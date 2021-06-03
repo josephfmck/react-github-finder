@@ -56,14 +56,19 @@ const GithubState = (props) => {
 
   //  Get Repos
 
-  //  Clear Users
+  //* Clear users
+  const clearUsersMethodAppJS = () => {
+    //clear users and dont render loading img
+    setUsers([]);
+    setLoading(false);
+  };
 
-  //  Set Loading - sets Loading state
+  //*  Set Loading - sets Loading state
   //dispatch to githubReducer - obj has to have type
   const setLoading = () => dispatch({ type: SET_LOADING });
 
   //* return provider
-  //wrap entire app with Provider
+  //wrap state with Provider to use state
   //value prop - context - all state available to entire app
   //everything wrapped with provider has access to value prop
   return (

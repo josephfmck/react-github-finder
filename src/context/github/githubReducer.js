@@ -1,5 +1,5 @@
 //USING JS NOT A COMPONENT
-//Reducer handles what to do with state when things happen
+//Reducer updates state based on type of action
 
 import {
   SEARCH_USERS,

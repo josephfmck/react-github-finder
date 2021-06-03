@@ -14,7 +14,7 @@ import "./App.css";
 
 //* pass in props
 const App = () => {
-  //* State
+  //* Create State
   //users = [], set = setState
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
@@ -56,13 +56,6 @@ const App = () => {
     setLoading(false);
   };
 
-  //* Clear users from State
-  const clearUsersMethodAppJS = () => {
-    //clear users and dont render loading img
-    setUsers([]);
-    setLoading(false);
-  };
-
   //* Set Alert
   const setAlertMethodAppJS = (msg, type) => {
     //* Set alert state to obj of msg and type
@@ -94,13 +87,9 @@ const App = () => {
                 render={(props) => (
                   <Fragment>
                     {/* methods passed in to <Search/> props */}
-                    <Search
-                      clearUsersMethodAppJSProp={clearUsersMethodAppJS}
-                      showClearBtnBoolProp={users.length > 0 ? true : false}
-                      setAlertMethodAppJSProp={setAlertMethodAppJS}
-                    />
-                    {/* pass state as Users props */}
-                    <Users loading={loading} users={users} />
+                    <Search setAlertMethodAppJSProp={setAlertMethodAppJS} />
+                    {/* app state props replaced with githubState  */}
+                    <Users />
                   </Fragment>
                 )}
               />

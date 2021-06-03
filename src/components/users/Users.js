@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 //* grab to add props to this component, Users.js is a parent/wrapper to UserItem
 import UserItem from "./UserItem";
 //* grab Spinner, Users.js is Spinner's wrapper
 import Spinner from "../layout/Spinner";
 //? short: impt
 import PropTypes from "prop-types";
+import githubContext from "../../context/github/githubContext";
+import GithubContext from "../../context/github/githubContext";
 
-//?Removed State so change to Functional
-//* Destructure props App.js passed in
-const Users = ({ users, loading }) => {
+const Users = () => {
+  //* init state
+  const githubContext = useContext(GithubContext);
+
+  //*destructure githubState
+  const { loading, users } = githubContext;
+
   //* IF loading render Spinner, IF done loading render divs
   if (loading) {
     return <Spinner />;
@@ -27,12 +33,6 @@ const Users = ({ users, loading }) => {
       </div>
     );
   }
-};
-
-//* Default and Types
-Users.propTypes = {
-  users: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 //* Declare inline styles, This will be a wrapper grid

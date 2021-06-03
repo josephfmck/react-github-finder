@@ -8,6 +8,7 @@ const Search = ({
   setAlertMethodAppJSProp,
 }) => {
   //*Init githubContext with hook
+  //*allows to grab searchUser instead of passing in as prop
   const githubContext = useContext(GithubContext);
 
   //Destructure State,    text=state setText=method to change state
