@@ -22,22 +22,6 @@ const App = () => {
 
   //* Methods
 
-  //* Get user's repos
-  const getUserReposMethodAppJS = async (username) => {
-    setLoading(true);
-
-    //* Search repos endpoint, 5 per page, sort by most recent (ascending)
-    const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-
-    console.log("getUserRepos res", res);
-
-    //* Set repos arr State, AFTER FETCH
-    setRepos(res.data);
-    setLoading(false);
-  };
-
   //* Set Alert
   const setAlertMethodAppJS = (msg, type) => {
     //* Set alert state to obj of msg and type
@@ -78,22 +62,11 @@ const App = () => {
               {/* About Route, 1 component with no props so no render, just component={About}*/}
               <Route exact path='/about' component={About} />
 
-              {/* User Route, login=username passed in, render needed since using props */}
+              {/* User Route, login=username passed in */}
               {/* () implicit return */}
               {/* ...props all props from API user state obj */}
               {/* set userProp=userState */}
-              {/* getUser(loginProp) execs inside User.js setting user State to API data; THEN pass user State in as prop for <User/> to use */}
-              <Route
-                exact
-                path='/user/:login'
-                render={(props) => (
-                  <User
-                    {...props}
-                    getUserReposMethodAppJSProp={getUserReposMethodAppJS}
-                    reposPropAppJS={repos}
-                  />
-                )}
-              />
+              <Route exact path='/user/:login' component={User} />
             </Switch>
           </div>
         </div>

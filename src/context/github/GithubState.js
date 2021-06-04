@@ -70,7 +70,20 @@ const GithubState = (props) => {
     });
   };
 
-  //  Get Repos
+  //* Get user's repos
+  const getUserReposMethodAppJS = async (username) => {
+    setLoading();
+
+    //* Search repos endpoint, 5 per page, sort by most recent (ascending)
+    const res = await axios.get(
+      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    console.log("getUserRepos res", res);
+
+    //* Set repos arr State, AFTER FETCH
+    dispatch({ type: GET_REPOS, payload: res.data });
+  };
 
   //* Clear users
   const clearUsersMethodAppJS = () => {
@@ -98,6 +111,7 @@ const GithubState = (props) => {
         searchUsersMethodAppJS,
         clearUsersMethodAppJS,
         getUserMethodAppJS,
+        getUserReposMethodAppJS,
       }}
     >
       {/* children */}
