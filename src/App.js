@@ -6,7 +6,6 @@ import Search from "./components/users/Search";
 import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 import User from "./components/users/User";
-import axios from "axios";
 
 import GithubState from "./context/github/GithubState";
 //*main css for every component
@@ -16,9 +15,7 @@ import "./App.css";
 const App = () => {
   //* Create State
   //users = [], set = setState
-  const [repos, setRepos] = useState([]);
   const [alert, setAlert] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   //* Methods
 

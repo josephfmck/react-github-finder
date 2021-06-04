@@ -1,17 +1,17 @@
 import React, { Fragment, useEffect, useContext } from "react";
 import Spinner from "../layout/Spinner";
 import Repos from "../repos/Repos";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import GithubContext from "../../context/github/githubContext";
 
 //* props passed in
-const User = ({ reposPropAppJS, getUserReposMethodAppJSProp, match }) => {
+const User = ({ match }) => {
   //* Init global State
   const githubContext = useContext(GithubContext);
 
   //* Destructure global State
-  const { getUserMethodAppJS, loading, user } = githubContext;
+  const { getUserMethodAppJS, loading, user, repos, getUserReposMethodAppJS } =
+    githubContext;
 
   //*Replace Lifecycle componentDidMount()
   //*Exec when component loaded
@@ -19,7 +19,7 @@ const User = ({ reposPropAppJS, getUserReposMethodAppJSProp, match }) => {
   useEffect(() => {
     //*match.params.login pulled from URL path='/user/:login'
     getUserMethodAppJS(match.params.login);
-    getUserReposMethodAppJSProp(match.params.login);
+    getUserReposMethodAppJS(match.params.login);
 
     //? to remove eslint warning for methods to be dependencies [getuser, etc.]
     // eslint-disable-next-line
@@ -109,15 +109,9 @@ const User = ({ reposPropAppJS, getUserReposMethodAppJSProp, match }) => {
         <div className='badge badge-light'>Public Repos: {public_repos}</div>
         <div className='badge badge-dark'>Public Gists: {public_gists}</div>
       </div>
-      <Repos reposPropUserJS={reposPropAppJS} />
+      <Repos reposPropUserJS={repos} />
     </Fragment>
   );
-};
-
-//* props all from <App/>
-User.propTypes = {
-  getUserReposMethodAppJSProp: PropTypes.func.isRequired,
-  reposPropAppJS: PropTypes.array.isRequired,
 };
 
 export default User;
