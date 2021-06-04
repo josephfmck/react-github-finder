@@ -16,6 +16,15 @@ const AlertState = (props) => {
   //*Actions/methods
 
   //* Set Alert
+  const setAlertMethodAppJS = (msg, type) => {
+    //* Set alert state to obj of msg and type
+    setAlert({ msg: msg, type: type });
+
+    //* Clear alert obj after 5 secs
+    setTimeout(() => {
+      setAlert(null);
+    }, 5000);
+  };
 
   //* context Provider allows access to State from any Comp using value
   return (
