@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
-import PropTypes from "prop-types";
 import GithubContext from "../../context/github/githubContext";
+import AlertContext from "../../context/alert/alertContext";
 
-const Search = ({ setAlertMethodAppJSProp }) => {
+const Search = () => {
   //*Init githubContext with hook
   //*allows to grab searchUser instead of passing in as prop
   const githubContext = useContext(GithubContext);
+  //* init alertContext
+  const alertContext = useContext(AlertContext);
 
   //Destructure State,    text=state setText=method to change state
   // set text to "" with useState, NOW we can use
@@ -23,7 +25,7 @@ const Search = ({ setAlertMethodAppJSProp }) => {
     //* Check search text not empty, light type alert
     if (text === "") {
       //* setAlert() <Search/> prop from <App/>
-      setAlertMethodAppJSProp("Please enter something", "light");
+      alertContext.setAlertMethodAppJS("Please enter something", "light");
     } else {
       console.log(`Search Form Text ${text}`);
       //*exec with state text
@@ -64,11 +66,6 @@ const Search = ({ setAlertMethodAppJSProp }) => {
       )}
     </div>
   );
-};
-
-//Refact: move propTypes outside
-Search.propTypes = {
-  setAlertMethodAppJSProp: PropTypes.func.isRequired,
 };
 
 export default Search;

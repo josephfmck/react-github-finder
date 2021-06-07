@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import AlertContext from "../../context/alert/alertContext";
 
-//* takes in alert obj from <App/>'s state
-//* In <App/> pass in alertProp as prop, <Alert alert="this.state.alert/>
-const Alert = ({ alertProp }) => {
+const Alert = () => {
+  //*Init context
+  const alertContext = useContext(AlertContext);
+
+  //* Destructure alert state
+  const { alert } = alertContext;
+
   return (
     //* if alert not null then show div, else nothing
-    alertProp !== null && (
-      <div className={`alert alert-${alertProp.type}`}>
-        <i className='fas fa-info-circle'></i> {alertProp.msg}
+    alert !== null && (
+      <div className={`alert alert-${alert.type}`}>
+        <i className='fas fa-info-circle'></i> {alert.msg}
       </div>
     )
   );
