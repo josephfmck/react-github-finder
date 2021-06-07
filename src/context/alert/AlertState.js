@@ -17,12 +17,14 @@ const AlertState = (props) => {
 
   //* Set Alert
   const setAlertMethodAppJS = (msg, type) => {
-    //* Set alert state to obj of msg and type
-    setAlert({ msg: msg, type: type });
+    dispatch({
+      type: SET_ALERT,
+      payload: { msg, type },
+    });
 
     //* Clear alert obj after 5 secs
     setTimeout(() => {
-      setAlert(null);
+      dispatch({ type: REMOVE_ALERT });
     }, 5000);
   };
 

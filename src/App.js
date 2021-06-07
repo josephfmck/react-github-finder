@@ -29,8 +29,7 @@ const App = () => {
           <div className='App'>
             <Navbar title='Github Binder' />
             <div className='container'>
-              {/* pass in alert state as prop */}
-              <Alert alertProp={alert} />
+              <Alert />
               {/* Switch show one Route at a time */}
               <Switch>
                 {/* Route home exact path /, render  */}
@@ -40,7 +39,7 @@ const App = () => {
                   render={(props) => (
                     <Fragment>
                       {/* methods passed in to <Search/> props */}
-                      <Search setAlertMethodAppJSProp={setAlertMethodAppJS} />
+                      <Search />
                       {/* app state props replaced with githubState  */}
                       <Users />
                     </Fragment>
