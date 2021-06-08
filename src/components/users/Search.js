@@ -11,6 +11,7 @@ const Search = () => {
 
   //Destructure State,    text=state setText=method to change state
   // set text to "" with useState, NOW we can use
+  //* update text state to search input
   const [text, setText] = useState("");
 
   //* EVENTS

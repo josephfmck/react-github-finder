@@ -1,12 +1,10 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import Users from "./components/users/Users";
-import Search from "./components/users/Search";
 import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 import User from "./components/users/User";
-
+import Home from "./components/pages/Home";
 import GithubState from "./context/github/GithubState";
 import AlertState from "./context/alert/AlertState";
 
@@ -33,18 +31,7 @@ const App = () => {
               {/* Switch show one Route at a time */}
               <Switch>
                 {/* Route home exact path /, render  */}
-                <Route
-                  exact
-                  path='/'
-                  render={(props) => (
-                    <Fragment>
-                      {/* methods passed in to <Search/> props */}
-                      <Search />
-                      {/* app state props replaced with githubState  */}
-                      <Users />
-                    </Fragment>
-                  )}
-                />
+                <Route exact path='/' component={Home} />
                 {/* About Route, 1 component with no props so no render, just component={About}*/}
                 <Route exact path='/about' component={About} />
 
