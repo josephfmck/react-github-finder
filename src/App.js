@@ -30,7 +30,7 @@ const App = () => {
             <Navbar title='Github Binder' />
             <div className='container'>
               <Alert />
-              {/* Switch show one Route at a time */}
+              {/* Switch shows one Route at a time */}
               <Switch>
                 {/* Route home exact path / */}
                 <Route exact path='/' component={Home} />
