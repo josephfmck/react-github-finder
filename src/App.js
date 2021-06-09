@@ -32,7 +32,7 @@ const App = () => {
               <Alert />
               {/* Switch show one Route at a time */}
               <Switch>
-                {/* Route home exact path /, render  */}
+                {/* Route home exact path / */}
                 <Route exact path='/' component={Home} />
                 {/* About Route, 1 component with no props so no render, just component={About}*/}
                 <Route exact path='/about' component={About} />
