@@ -12,6 +12,21 @@ import {
   GET_REPOS,
 } from "../types";
 
+let githubClientId;
+let githubClientSecret;
+
+//* Check if environment is in production
+if (process.env.NODE_ENV !== "production") {
+  //* Set to personal API info
+  githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
+  githubClientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET;
+} else {
+  //* Are in production
+  //* look for global var without REACT_APP
+  githubClientId = process.env.GITHUB_CLIENT_ID;
+  githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
+}
+
 //func
 //Initialize State, includes all actions
 const GithubState = (props) => {
@@ -39,7 +54,7 @@ const GithubState = (props) => {
 
     //* Search with text, and endpoint search
     const res = await axios.get(
-      `https://api.github.com/search/users?q=${searchText}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+      `https://api.github.com/search/users?q=${searchText}&client_id=${githubClientId}&client_secret=${githubClientSecret}`
     );
 
     console.log(res);
@@ -58,7 +73,7 @@ const GithubState = (props) => {
 
     //* Search with text, /users/username
     const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+      `https://api.github.com/users/${username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
     );
 
     console.log("getUser res", res);
@@ -76,7 +91,7 @@ const GithubState = (props) => {
 
     //* Search repos endpoint, 5 per page, sort by most recent (ascending)
     const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${githubClientId}&client_secret=${githubClientSecret}`
     );
 
     console.log("getUserRepos res", res);
